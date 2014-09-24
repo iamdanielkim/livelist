@@ -1,0 +1,43 @@
+{
+  "name": "livelist",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node lib/index.js"
+  },
+  "dependencies": {
+    "express": "3.4.8",
+    "ejs": "*",
+    "stylus": "*",
+    "gherkin": "2.12.2",
+    "share": "0.6.0",
+    "browserchannel": "*",
+    "mustache": "*",
+    "hogan-express": "*",
+    "marked": "*",
+    "blueimp-file-upload": "*",
+    "blueimp-gallery": "*",
+    "walk": "*",
+    "redis": "*"
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "grunt": "^0.4.5",
+    "karma": "^0.12.23",
+    "karma-chrome-launcher": "^0.1.4",
+    "mocha": "^1.21.4",
+    "karma-mocha": "^0.1.9",
+    "karma-safari-launcher": "^0.1.1",
+    "karma-coffee-preprocessor": "^0.2.1",
+    "karma-html2js-preprocessor": "^0.1.0",
+    "karma-chai": "^0.1.0",
+    "grunt-contrib-uglify": "^0.6.0",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-concat": "^0.5.0",
+    "karma-coverage": "^0.2.6",
+    "grunt-usemin": "^2.4.0",
+    "grunt-contrib-cssmin": "^0.10.0",
+    "grunt-filerev": "^0.2.1"
+  }
+}

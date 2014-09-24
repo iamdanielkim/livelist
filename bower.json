@@ -1,0 +1,27 @@
+{
+  "name": "livelist",
+  "version": "0.1.0",
+  "homepage": "https://github.com/iamdanielkim/livelist",
+  "authors": [
+    "iamdanielkim <iamdanielkim@sk.com>"
+  ],
+  "description": "wysiwyg list",
+  "main": "lib/index.js",
+  "keywords": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components",
+    "test"
+  ],
+  "devDependencies": {
+    "mocha": "~1.18.2",
+    "assert": "~0.0.2",
+    "coffee-script": "~1.7.1",
+    "chai": "~1.9.1"
+  },
+  "dependencies": {
+    "jquery": "~2.1.1"
+  }
+}

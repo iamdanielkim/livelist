@@ -1,0 +1,47 @@
+
+.tree {
+  margin-right: -21px; /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+
+.item { padding-top: 2px;}
+
+.tree > li > .icon {
+  text-decoration: none;
+  float:left;
+  clear:left;
+  margin: 0px;
+  padding: 0px 5px;
+}
+
+.tree > .selected > .icon, .tree > .selected > .title-wrap {
+  color: #fff;
+}
+
+.tree > .selected {
+  background-color: #428bca;
+}
+
+.tree .title {
+  text-decoration: none;
+  display: inline-block;
+  width: 97%;
+}
+.tree > .selected .title {
+  color: #fff;
+}
+
+.go { display:none; cursor: pointer; float:right;}
+.item.hover > .title-wrap > .go { display:inline; }
+
+.commands {
+  padding: 3px 3px 3px 20px ;
+  display: none;
+  cursor: pointer;
+  margin-left:0px;
+}
+
+.expand > .commands {
+  display: block;
+}
