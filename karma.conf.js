@@ -44,7 +44,7 @@ module.exports = function(config) {
     reporters: ['progress', 'coverage'],
 
     // web server port
-    port: 9876,
+    port: 9878,
 
 
     // enable / disable colors in the output (reporters and logs)
