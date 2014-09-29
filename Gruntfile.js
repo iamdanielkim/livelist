@@ -23,7 +23,11 @@ module.exports = function(grunt) {
       }
     },
     jshint: {
-      files: ['Gruntfile.js', 'assets/**/*.js', 'test/**/*.js'],
+      files: [
+       'Gruntfile.js',
+       'assets/**/*.js',
+       'test/**/*.js'
+      ],
       options: {
         // options here to override JSHint defaults
         globals: {
@@ -36,6 +40,7 @@ module.exports = function(grunt) {
     },
     karma: {
       options: {
+        runnerPort: 9878,
         configFile: 'karma.conf.js',
         browsers: ['Chrome']
 
@@ -45,6 +50,7 @@ module.exports = function(grunt) {
         browsers: ['PhantomJS']
       },
       dev: {
+        runnerPort: 9878,
         background: true,
         singleRun: false
       }
@@ -52,9 +58,10 @@ module.exports = function(grunt) {
 
     watch: {
       files: ['<%= jshint.files %>'],
-      tasks: ['jshint', 'karma:dev:run']
+  //    tasks: ['jshint', 'karma:dev:run']
+      tasks: ['jshint']
     }
-  });
+  }); 
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');

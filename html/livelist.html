@@ -26,49 +26,40 @@
         <hr>
         <div id="panel">
 
-            <ul class="tree root">
-                <li class="item" id="89">
-                    <div class="title-wrap"><span class="title" contenteditable>하하하</span> </div>
-                    <ul class="tree">
-                         <li id="90" class="item"><div class="title-wrap"><span class="title" contenteditable>하하하</span> </div></li>
-                         <li id="91" class="item"><div class="title-wrap"><span class="title" contenteditable>헤헤</span> </div></li>
-                         <li id="92" class="item"><div class="title-wrap"><span class="title" contenteditable>후후</span> </div></li>
-                         <li id="93" class="item"><div class="title-wrap"><span class="title" contenteditable="">ㅋㅋㅋ</span> </div>
-                             <ul class="tree">
-                                 <li id="94" class="item"><div class="title-wrap"><span class="title" contenteditable="">A</span> </div></li>
-                                 <li id="95" class="item"><div class="title-wrap"><span class="title" contenteditable="">B</span> </div></li>
-                                 <li id="96" class="item"><div class="title-wrap"><span class="title" contenteditable="">c</span> </div></li>
-                                 <li id="97" class="item"><div class="title-wrap"><span class="title" contenteditable="">d</span> </div></li>
+            <ul id="list-grand-parent" class="tree root">
+                <li id="1st" class="item" title="C1000"><div class="title-wrap"><span class="title" contenteditable="">1st</span> </div></li>
+                <li id="2nd" class="item" title="C1001" modified><div class="title-wrap"><span class="title" contenteditable="">2nd CHANGED TITLE</span> </div></li>
+                <li id="3rd" class="item" title="C1002" modified><div class="title-wrap"><span class="title" contenteditable="">3rd CHANGED C1002</span> </div></li>
+                <li id="4th" class="item" title="C1003"><div class="title-wrap"><span class="title" contenteditable="">4th C1003</span> </div></li>
+                <li id="5th" class="item" title="하하하" moved>
+                    <div class="title-wrap"><span class="title" contenteditable>5th 하하하</span> </div>
+                    <ul id="list-parent" class="tree">
+                         <li id="6th" class="item" title="헤헤" created>
+                             <div class="title-wrap"><span class="title" contenteditable>6th 헤헤</span> </div>
+                             <ul id="list-child" class="tree">
+                                 <li id="7th" class="item" title="d" created>
+                                     <div class="title-wrap"><span class="title" contenteditable="">7th d</span> </div>
+                                 </li>
+                                 <li id="8th" class="item selected" title="f15" created >
+                                     <div class="title-wrap"><span class="title" contenteditable="">8th f15</span> </div>
+                                 </li>
                              </ul>
                          </li>
-                         <li id="98" class="item"><div class="title-wrap"><span class="title" contenteditable="">!!!!</span> </div>
-                             <ul class="tree">
-                                 <li class="item"><div class="title-wrap"><span class="title" contenteditable="">@@@@</span> </div></li>
-                             </ul>
+                         <li id="9th" class="item" title="f14 title" moved modified>
+                             <div class="title-wrap"><span class="title" contenteditable="">9th Changed Title</span> </div>
                          </li>
-                         <li id="99" class="item"><div class="title-wrap"><span class="title" contenteditable="">1</span> </div>
-                             <ul class="tree">
-                                 <li id="100" class="item"><div class="title-wrap"><span class="title" contenteditable="">2</span> </div></li>
-                                 <li id="101" class="item"><div class="title-wrap"><span class="title" contenteditable="">3</span> </div></li>
-                                 <li id="102" class="item"><div class="title-wrap"><span class="title" contenteditable="">4</span> </div></li>
-                                 <li id="103" class="item"><div class="title-wrap"><span class="title" contenteditable="">5</span> </div></li>
-                             </ul>
-                         </li>
-
                      </ul>
                 </li>
-                <li id="1000" class="item"><div class="title-wrap"><span class="title" contenteditable="">w</span> </div></li>
-                <li id="1001" class="item"><div class="title-wrap"><span class="title" contenteditable="">x</span> </div></li>
-                <li id="1002" class="item"><div class="title-wrap"><span class="title" contenteditable="">y</span> </div></li>
-                <li id="1003" class="item"><div class="title-wrap"><span class="title" contenteditable="">z</span> </div></li>
             </ul>
+
+
         </div>
         <div id="console"></div>
 
 <script>
   $(document).ready(function(){
       lt = [{"_id":"1000","title":"w","parent":"panel","next":"1001","children":[]},{"_id":"1001","title":"x","parent":"panel","prev":"1000","next":"1002","children":[]},{"_id":"1002","title":"y","parent":"panel","prev":"1001","next":"1003","children":[]},{"_id":"1003","title":"z","parent":"panel","prev":"1002","next":"e76ea399-b88d-459f-b305-803878f0bde1","children":[]},{"_id":"e76ea399-b88d-459f-b305-803878f0bde1","title":"asd","status":"_modified","parent":"panel","prev":"1003","next":"dd782860-ee37-41c7-c096-fe8cf696b688","children":[]},{"_id":"dd782860-ee37-41c7-c096-fe8cf696b688","title":"acas","status":"_modified","parent":"panel","prev":"e76ea399-b88d-459f-b305-803878f0bde1","next":"8ebba019-d324-46e5-96c8-f55d4668e2a1","children":[]},{"_id":"8ebba019-d324-46e5-96c8-f55d4668e2a1","title":"","status":"_created","parent":"panel","prev":"dd782860-ee37-41c7-c096-fe8cf696b688","children":[]}];
-      livelist(".root");
+      LiveList.create(".root");
       console.log(JSON.stringify(lt))
   });
 

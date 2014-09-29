@@ -12,9 +12,9 @@ describe 'Item', () ->
   describe 'Item.createByElement()', () ->
     it 'first element', () ->
       $("body").html(simplefixture)
-      item = Item.createByElement($("#1000"))
+      item = Item.createByElement($("#first-child"))
 
-      expected = "1000:C1000:nil_parent:nil_prev:1001:nil_firstchild"
+      expected = "first-child:Cfirst-child:nil_parent:nil_prev:1001:nil_firstchild"
       assert.equal item.isSeed(), true, "최상위 List의 첫번째 Item "
       assert.equal item, expected , item + " == " + expected
 
@@ -22,7 +22,7 @@ describe 'Item', () ->
       $("body").html(simplefixture)
       item = Item.createByElement($("#1001"))
 
-      expected = "1001:C1001:nil_parent:1000:1002:nil_firstchild"
+      expected = "1001:C1001:nil_parent:first-child:1002:nil_firstchild"
       assert.equal item.isSeed(), false, "최상위 List의 첫번째 Item가 아닌 경우 "
       assert.equal item, expected , item + " == " + expected
 
@@ -53,7 +53,7 @@ describe 'Item', () ->
           id: "1001",
           title: "C1001"
           parent: "nil_parent"
-          prev: "1000"
+          prev: "first-child"
           next: "1002"
           firstChild: "nil_firstchild"
       };

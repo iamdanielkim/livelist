@@ -52,6 +52,8 @@ LivelistSerializer.prototype = {
     }
   },
   toHTML: function(className){
+    if(!this.hierarchy || this.hierarchy.length === 0)
+      return "";
     return this.toListHTML(this.hierarchy, className) || [
         '<ul class="tree ' + className + '">',
           LivelistSerializer.newItem(),

@@ -74,16 +74,6 @@
               parents: raw,
               children: []
           };
-      },
-      toTreeHTML: function(treeData){
-          console.log(this.toTreeJson(treeData));
-          return livelist.nestedSerializer.jsonToLive(this.toTreeJson(treeData));
-      },
-      toItemHTML: function(itemData){
-          return livelist.nestedSerializer.jsonToItem(this.toItemJson(itemData));
-      },
-      updateHtmlByModifiedItem: function(itemData){
-
       }
   };
 
