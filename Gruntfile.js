@@ -23,7 +23,11 @@ module.exports = function(grunt) {
       }
     },
     jshint: {
-      files: ['Gruntfile.js', 'assets/**/*.js', 'test/**/*.js'],
+      files: [
+       'Gruntfile.js',
+       'assets/**/*.js',
+       'test/**/*.js'
+      ],
       options: {
         // options here to override JSHint defaults
         globals: {
@@ -34,16 +38,34 @@ module.exports = function(grunt) {
         }
       }
     },
+    karma: {
+      options: {
+        runnerPort: 9878,
+        configFile: 'karma.conf.js',
+        browsers: ['Chrome']
+
+      },
+      continuous: {
+        singleRun: true,
+        browsers: ['PhantomJS']
+      },
+      dev: {
+        runnerPort: 9878,
+        background: true,
+        singleRun: false
+      }
+    },
 
     watch: {
       files: ['<%= jshint.files %>'],
+  //    tasks: ['jshint', 'karma:dev:run']
       tasks: ['jshint']
     }
-  });
-
+  }); 
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-karma');
 
   grunt.loadNpmTasks('grunt-usemin');
   grunt.loadNpmTasks('grunt-contrib-concat');
@@ -59,6 +81,6 @@ module.exports = function(grunt) {
     'usemin'
   ]);
 
-  grunt.registerTask('test', ['jshint']);
+  grunt.registerTask('test', ['karma:dev:start', 'watch']);
   grunt.registerTask('default', ['jshint', 'concat', 'uglify']);
 };

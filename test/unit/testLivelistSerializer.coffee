@@ -19,8 +19,8 @@ describe 'livelist_serializer', () ->
         serializer.buildMapperByElements($("body .tree"))
 
         map = serializer.map
-        assert.equal serializer.seed, map['1000']
-        assert.ok map['1000']
+        assert.equal serializer.seed, map['first-child']
+        assert.ok map['first-child']
         assert.ok map['1001']
         assert.ok map['1002']
         assert.ok map['1003']
@@ -67,16 +67,16 @@ describe 'livelist_serializer', () ->
   describe 'toItemHTML()', () ->
     it 'simple item', () ->
       $("body").html(simplefixture)
-      json = Item.createByElement($("#1000"))
+      json = Item.createByElement $("#first-child")
 
       actual = (new LivelistSerializer()).toItemHTML(json)
       expected = """
-      <li class="item" id="1000" title="C1000"><div class="title-wrap"><span class="title" contenteditable>C1000</span></div></li>
+      <li class="item" id="first-child" title="Cfirst-child"><div class="title-wrap"><span class="title" contenteditable>Cfirst-child</span></div></li>
       """
       assert.equal actual, expected, actual + " == " + expected
 
     it 'non-existance item', () ->
-      json = Item.createByElement($("#NON_EL"))
+      json = Item.createByElement $("#NON_EL")
 
       actual = (new LivelistSerializer()).toItemHTML(json)
       expected = """
@@ -107,7 +107,7 @@ describe 'livelist_serializer', () ->
       actual = serializer.toHTML()
       expected = """
       <ul class="tree ">
-<li class="item" id="1000" title="C1000"><div class="title-wrap"><span class="title" contenteditable>C1000</span></div></li>
+<li class="item" id="first-child" title="Cfirst-child"><div class="title-wrap"><span class="title" contenteditable>Cfirst-child</span></div></li>
 <li class="item" id="1001" title="C1001"><div class="title-wrap"><span class="title" contenteditable>C1001</span></div></li>
 <li class="item" id="1002" title="C1002"><div class="title-wrap"><span class="title" contenteditable>C1002</span></div></li>
 <li class="item" id="1003" title="C1003"><div class="title-wrap"><span class="title" contenteditable>C1003</span></div></li>
@@ -120,7 +120,7 @@ describe 'livelist_serializer', () ->
 
       actual = serializer.toHTML()
       expected = ""
-      assert.equal actual, expected, actual + " == " + expected
+      assert.equal expected, actual , "없는 element면 아무것도 생성되지 않음"
 
 
     it 'tree list', () ->
@@ -151,29 +151,15 @@ describe 'livelist_serializer', () ->
       changesets = LivelistSerializer.getChangesets($("body .tree"))
 
       expected = [
-        { modified:
-            id: "1001"
-            now: "CHANGED TITLE"
-            old: "C1001"},
-        { modified:
-            id: "1002"
-            now: "CHANGED C1002"
-            old: "C1002" },
-        { moved:
-            id: "f11"
-            item: "f11:nil_parent:1003:nil_next:f12" },
-        { created:
-            id: "f12"
-            item:"f12:헤헤:f11:nil_prev:f14:f13" },
-        { created:
-            id: "f13"
-            item:"f13:d:f12:nil_prev:f15:nil_firstchild" },
-        { modified:
-            id: "f14"
-            now: "F14 Changed Title"
-            old: "f14 title",
-          moved:
-            id: "f14"
-            item: "f14:f11:f12:nil_next:nil_firstchild" }
+        { modified: id:"2nd", now:"2nd CHANGED TITLE", old:"C1001" }
+        { modified: id:"3rd", now:"3rd CHANGED C1002", old:"C1002" }
+        { moved: "id":"5th","item":"5th:nil_parent:4th:nil_next:6th" }
+        { created: "id":"6th","item":"6th:헤헤:5th:nil_prev:9th:7th" }
+        { created: "id":"7th","item":"7th:d:6th:nil_prev:8th:nil_firstchild" }
+        {
+          modified: "id":"9th","now":"9th Changed Title","old":"f14 title"
+          moved:"id":"9th","item":"9th:5th:6th:nil_next:nil_firstchild"
+        }
       ]
+
       assert.deepEqual changesets, expected
